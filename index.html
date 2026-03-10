@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LetterForge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="confetti-layer" class="confetti-layer" aria-hidden="true"></div>
+    <main class="app">
+      <header class="header">
+        <div class="title-row">
+          <button id="help-btn" class="icon-btn" type="button" aria-label="How to play">?</button>
+          <h1>LETTERFORGE</h1>
+          <div class="title-actions">
+            <button id="vs-btn" class="icon-btn" type="button" aria-label="Create 1 vs 1 challenge">1v1</button>
+            <button id="share-btn" class="icon-btn" type="button" aria-label="Share results">Share</button>
+          </div>
+        </div>
+        <div class="top-bar">
+          <div class="controls-left">
+            <label for="level-select" class="level-label">Level</label>
+            <select id="level-select" class="level-select" aria-label="Select difficulty">
+              <option value="3">Very Easy (3)</option>
+              <option value="4">Easy (4)</option>
+              <option value="5" selected>Normal (5)</option>
+              <option value="6">Hard (6)</option>
+              <option value="7">Very Hard (7)</option>
+              <option value="random">Random (3-15)</option>
+            </select>
+            <label for="theme-select" class="level-label">Theme</label>
+            <select id="theme-select" class="level-select" aria-label="Select theme">
+              <option value="classic">Classic</option>
+              <option value="midnight">Midnight</option>
+              <option value="forest">Forest</option>
+              <option value="sunset">Sunset</option>
+            </select>
+            <button id="ready-btn" class="new-game-btn ready-btn hidden" type="button">Ready</button>
+            <button id="new-game-btn" class="new-game-btn" type="button">New Game</button>
+          </div>
+          <div class="meta">
+            <p id="stats" class="stats" aria-live="polite">Played: 0 | Win%: 0 | Streak: 0</p>
+            <p id="timer" class="timer" aria-live="polite">Time: 00:00.0</p>
+          </div>
+        </div>
+        <p id="realtime-status" class="realtime-status" aria-live="polite"></p>
+      </header>
+
+      <section class="game-area" aria-live="polite">
+        <div id="message" class="message" role="status"></div>
+        <div id="grid" class="grid" aria-label="Game board"></div>
+      </section>
+
+      <section class="keyboard-wrap" aria-label="On-screen keyboard">
+        <div id="keyboard" class="keyboard"></div>
+      </section>
+    </main>
+
+    <div id="help-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 id="help-title">How To Play</h2>
+          <button id="close-help-btn" class="icon-btn" type="button" aria-label="Close help">X</button>
+        </div>
+        <p>Guess the LETTERFORGE word in 6 tries.</p>
+        <ul>
+          <li>Each guess must be a valid word matching the selected level length.</li>
+          <li>The color of the tiles changes to show how close your guess was.</li>
+          <li>Green: correct letter in the correct spot.</li>
+          <li>Yellow: correct letter, wrong spot.</li>
+          <li>Gray: letter is not in the word.</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
